@@ -55,6 +55,16 @@ class Matrix {
             }
             return display;
         }
+
+        // Add two matrices
+        Matrix<_xDim, _yDim>
+        operator+(const Matrix<_xDim, _yDim> &rhM) {
+            Matrix<_xDim, _yDim> sum(0);
+            for (unsigned index = 0; index != xDim*yDim; ++index) {
+                sum.values[index] = values[index] + rhM.values[index];
+            }
+            return sum;
+        }
 };
 
 
@@ -65,6 +75,7 @@ class Matrix {
 int main()
 {
     Matrix<2, 3> m(1);
-    std::cout << m.show() << std::endl;
+    Matrix<2, 3> n(2);
+    std::cout << (m+n).show() << std::endl;
     return 0;
 }
